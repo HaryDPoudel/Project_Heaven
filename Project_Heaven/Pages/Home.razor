@@ -1,0 +1,31 @@
+﻿@page "/"
+
+<Profile/>
+
+<main class="portfolio-container1">
+    <section class="hero">
+        <h1>Roadmap</h1>
+        <p>Building 10+ projects in 25 days with Blazor WebAssembly.</p>
+    </section>
+
+    <section class="timeline">
+        @foreach (var chapter in Roadmap)
+        {
+            <div class="timeline-item @(SelectedChapter == chapter ? "active" : "")"
+                 @onclick="() => ToggleChapter(chapter)">
+                <div class="timeline-card-content">
+                    <span class="chapter-id">Chapter @chapter.Id</span>
+                    <h3>@chapter.Name</h3>
+                    @if (SelectedChapter == chapter)
+                    {
+                        <div class="chapter-details">
+                            <p><strong>Objectives:</strong> @chapter.Objectives</p>
+                            <p><strong>Goal:</strong> @chapter.FinalProject</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </section>
+</main>
+<Footer/>
